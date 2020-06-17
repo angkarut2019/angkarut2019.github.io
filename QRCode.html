@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javascript scan qrcode</title>
+
+    <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="./assets/vue.min.js"></script>
+
+    <style>
+        table.table td,
+        table.table th {
+
+            vertical-align: middle;
+
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #eaeaea;">
+    <br>
+    <div class="container" id="app">
+
+        <div class="row">
+
+            <!-- Camera QRode Scan -->
+
+            <div class="col-3">
+                <div class="card text-center">
+                    <video id="preview" class="card-img-top"></video>
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase">QRCode Scanner</h5>
+                        <p class="alert alert-warning">
+                            {{ message }}</p>
+                        <a href="#" class="btn btn-primary btn-block">More Detail</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Patient List -->
+            <div class="col-9">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Patient List QRCode
+
+                        </h4>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>QRCode</th>
+                                    <th class="text-right">Delete</th>
+
+
+                                </tr>
+
+
+                            </thead>
+                            <tbody>
+                                <tr v-for="(item , index) of items">
+                                    <td>{{ index + 1 }}</td>
+                                    <td>{{ item }}</td>
+                                    <td class="text-right">
+
+                                        <button v-on:click="onDelete(index)"
+                                            class="btn btn-sm btn-danger">&times;</button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- Javascript -->
+            <script>
+
+                var vueApp = new Vue({
+                    el: '#app',
+                    data: {
+                        items: [],
+                        message: 'Please Scan'
+
+
+                    },
+                    mounted: function () {
+
+                        this.onInitialOpenCamera();
+
+                    },
+                    methods: {
+
+                        onDelete: function (index) {
+                            //console.log(index);
+
+                            if (!confirm('Do you want to Delete this right?')) return;
+                            this.items.splice(index, 1);
+                        },
+
+                        onInitialOpenCamera() {
+
+
+                            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+
+                            scanner.addListener('scan', function (content) {
+
+
+                                if (vueApp.items.indexOf(content) >= 0) {
+
+                                    vueApp.message = 'QRCode is exit'
+                                }
+                                else {
+                                    vueApp.items.push(content);
+                                    console.log(content);
+                                    vueApp.message = 'Insert Success'
+                                }
+
+
+
+
+
+                                setTimeout(function () {
+                                    vueApp.message = 'Press Scan'
+                                }, 1500
+                                );
+
+
+                            })
+
+                            Instascan.Camera
+                                .getCameras()
+                                .then(function (cameras) {
+                                    if (cameras.length <= 0) return alert('Not Found Camera');
+                                    scanner.start(cameras[0]);
+                                })
+                                .catch(error => alert(error))
+                        }
+                    }
+
+                });
+
+            </script>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

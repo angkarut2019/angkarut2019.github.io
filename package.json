@@ -1,0 +1,16 @@
+{
+  "name": "qrcode-scanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "instascan.min.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "instascan": "^1.0.0",
+    "live-server": "^1.2.0"
+  }
+}
