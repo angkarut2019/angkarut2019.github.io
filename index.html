@@ -29,6 +29,15 @@
             return vars;
         }
 
+        var number1 = getUrlVars()["NO"];
+        var number2 = getUrlVars()["ID"];
+        var number3 = getUrlVars()["companyid"];
+        //console.log(number);
+
+        var data1 = number1;
+        var data2 = number2;
+        var data3 = number3;
+
         var vueApp = new Vue({
             el: '#app',
             data: {
