@@ -29,14 +29,19 @@
             return vars;
         }
 
-        var number1 = getUrlVars()["NO"];
-        var number2 = getUrlVars()["ID"];
-        var number3 = getUrlVars()["companyid"];
+        var number1 = getUrlVars()["station"];
+        var number2 = getUrlVars()["company"];
+        var number3 = getUrlVars()["date"];
         //console.log(number);
 
         var data1 = number1;
         var data2 = number2;
         var data3 = number3;
+
+
+alert(data1);
+alert(data2);
+alert(data2);
 
         var vueApp = new Vue({
             el: '#app',
