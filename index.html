@@ -59,7 +59,19 @@
                         //if (vueApp.items.indexOf(content) >= 0) {
 
                         //vueApp.message = 'QRCode is exit'
-                        alert(content);
+                       
+                       
+                        var number1 = getUrlVars()["station"];
+                        var number2 = getUrlVars()["company"];
+                        var number3 = getUrlVars()["date"];
+                        //console.log(number);
+
+                        var data1 = number1;
+                        var data2 = number2;
+                        var data3 = number3;
+                       
+                       
+                        alert(content + '>' + data1 + '>' + data2 + '>' + data3);
                         //}
                         //else {
                         //vueApp.items.push(content);
@@ -69,19 +81,10 @@
 
                         //}
 
-                        var number1 = getUrlVars()["station"];
-                        var number2 = getUrlVars()["company"];
-                        var number3 = getUrlVars()["date"];
-                        //console.log(number);
-
-                        var data1 = number1;
-                        var data2 = number2;
-                        var data3 = number3;
+                      
 
 
-                        alert(data1);
-                        alert(data2);
-                        alert(data2);
+                    
 
 
 
