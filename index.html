@@ -19,17 +19,20 @@
 
     <table width="100%">
         <tr>
-            <td>Station</td>
+            <td>Station : {{ cname }}</td>
         </tr>
         <tr>
             <td><video id="preview" class="card-img-top"></video></td>
         </tr>
     </table>
 
-    
+
 
 
     <script>
+
+
+        var cname = getUrlVars()["station"];
 
         function getUrlVars() {
             var vars = {};
