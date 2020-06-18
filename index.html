@@ -11,22 +11,23 @@
     <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script src="./assets/vue.min.js"></script>
 
-    <style>
-        table.table td,
-        table.table th {
-
-            vertical-align: middle;
-
-        }
-    </style>
+    
 
 </head>
 
 <body style="background-color: #eaeaea;">
     <video id="preview" class="card-img-top"></video>
-    
+
 
     <script>
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
 
         var vueApp = new Vue({
             el: '#app',
@@ -43,7 +44,7 @@
             },
             methods: {
 
-                
+
 
                 onInitialOpenCamera() {
 
@@ -55,15 +56,15 @@
 
                         //if (vueApp.items.indexOf(content) >= 0) {
 
-                            //vueApp.message = 'QRCode is exit'
-                            alert(content);
+                        //vueApp.message = 'QRCode is exit'
+                        alert(content);
                         //}
                         //else {
-                            //vueApp.items.push(content);
-                            //console.log(content);
-                            //alert(content);
-                            //vueApp.message = 'Insert Success'
-                            
+                        //vueApp.items.push(content);
+                        //console.log(content);
+                        //alert(content);
+                        //vueApp.message = 'Insert Success'
+
                         //}
 
 
@@ -93,7 +94,7 @@
     </script>
 
 
-    
+
 
 </body>
 
