@@ -56,19 +56,12 @@
                     scanner.addListener('scan', function (content) {
 
 
-                        var number1 = getUrlVars()["station"];
-                        var number2 = getUrlVars()["company"];
-                        var number3 = getUrlVars()["date"];
-                        //console.log(number);
-
-                        var data1 = number1;
-                        var data2 = number2;
-                        var data3 = number3;
+                       
 
 
                        
 
-                        alert('tracking_station.aspx?station=' + date1 + '&' + content + '');
+                        alert('tracking_station.aspx?station=' + getUrlVars()["station"] + '&' + content + '');
 
 
 
