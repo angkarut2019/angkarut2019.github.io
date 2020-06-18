@@ -56,11 +56,6 @@
                     scanner.addListener('scan', function (content) {
 
 
-                        //if (vueApp.items.indexOf(content) >= 0) {
-
-                        //vueApp.message = 'QRCode is exit'
-                       
-                       
                         var number1 = getUrlVars()["station"];
                         var number2 = getUrlVars()["company"];
                         var number3 = getUrlVars()["date"];
@@ -69,22 +64,17 @@
                         var data1 = number1;
                         var data2 = number2;
                         var data3 = number3;
-                       
-                       
-                        alert('tracking_station.aspx?station=' + date1 + '&' + content + '');
-                        //}
-                        //else {
-                        //vueApp.items.push(content);
-                        //console.log(content);
-                        //alert(content);
-                        //vueApp.message = 'Insert Success'
 
-                        //}
 
-                      
+                        alert(content);
+
+                        //alert('tracking_station.aspx?station=' + date1 + '&' + content + '');
+
+
+
                         //window.open('tracking_station.aspx?station=' + date1 + '&' + content + '');
 
-                    
+
 
 
 
