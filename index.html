@@ -16,7 +16,17 @@
 </head>
 
 <body style="background-color: #eaeaea;">
-    <video id="preview" class="card-img-top"></video>
+
+    <table width="100%">
+        <tr>
+            <td>Station</td>
+        </tr>
+        <tr>
+            <td><video id="preview" class="card-img-top"></video></td>
+        </tr>
+    </table>
+
+    
 
 
     <script>
@@ -56,10 +66,10 @@
                     scanner.addListener('scan', function (content) {
 
 
-                       
 
 
-                       
+
+
 
                         //alert('tracking_station.aspx?station=' + getUrlVars()["station"] + '&' + content + '');
 
