@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta http-equiv="refresh" content="30;">
+
+    <title>BHP Smart Mobile Checkup</title>
+
+    <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script src="./assets/vue.min.js"></script>
+
+
+
+</head>
+
+<body style="background-color: #eaeaea;">
+
+
+    <video id="preview" class="card-img-top"></video>
+
+    <script>
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+
+
+        var vueApp = new Vue({
+            el: '#app',
+            data: {
+                items: [],
+                message: 'Please Scan'
+
+
+            },
+            mounted: function () {
+
+                this.onInitialOpenCamera();
+
+            },
+            methods: {
+
+
+
+                onInitialOpenCamera() {
+
+
+                    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+
+                    scanner.addListener('scan', function (content) {
+
+
+
+
+
+
+
+                        //alert('tracking_station.aspx?station=' + getUrlVars()["station"] + '&' + content + '');
+
+
+
+                        window.open('http://bkh-preregis.bdms.co.th/smartmobile_bhp_live/send_document1.aspx?cpuid='  + getUrlVars()["cpuid"] +  '&station=' + getUrlVars()["station"] +  '&date='  + getUrlVars()["date"] +  '&' + content + '');
+
+
+
+
+
+                        setTimeout(function () {
+                            vueApp.message = 'Press Scan'
+                        }, 1500
+                        );
+
+ 
+                    })
+
+                    Instascan.Camera
+                        .getCameras()
+                        .then(function (cameras) {
+                            if (cameras.length <= 0) return alert('Not Found Camera');
+                            scanner.start(cameras[0]);
+                        })
+                        .catch(error => alert(error))
+                }
+            }
+
+        });
+
+    </script>
+
+
+
+
+</body>
+
+</html>
