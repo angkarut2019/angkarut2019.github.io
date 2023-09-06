@@ -72,7 +72,9 @@
                         //window.open('http://bkh-preregis.bdms.co.th/checkup_result_online/mobile/tracking_station.aspx?station=' + getUrlVars()["station"] +  '&date='  + getUrlVars()["date"] +  '&' + content + '');
                         window.open('http://bkh-preregis.bdms.co.th/smartmobile_bud_live/tracking_station.aspx?cname=' + getUrlVars()["cname"] +  '&sname=' + getUrlVars()["sname"] +  '&station=' + getUrlVars()["station"] +  '&company=' + getUrlVars()["company"]  +  '&date='  + getUrlVars()["date"] +  '&' + content + '');
 
-                        //window.close();
+                         setTimeout(function () {
+  window.close();
+}, 3000); // 3 วินาที
 
 
 
